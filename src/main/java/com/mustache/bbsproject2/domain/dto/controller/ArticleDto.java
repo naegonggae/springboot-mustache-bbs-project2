@@ -4,12 +4,10 @@ import lombok.Getter;
 
 @Getter
 public class ArticleDto {
-    private Long id;
-    private String name;
-    private String password;
+    private String title;
 
-    public ArticleDto(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public ArticleDto(String title) {
+        this.title = title;
     }
 }
+
