@@ -1,0 +1,10 @@
+{{>layouts/header}}
+<form action="/articles" method="post">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">제목을 입력하세요.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{>layouts/footer}}

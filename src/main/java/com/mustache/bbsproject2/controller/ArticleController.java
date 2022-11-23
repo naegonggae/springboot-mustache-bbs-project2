@@ -22,7 +22,7 @@ public class ArticleController {
 
     @GetMapping("/new")
     public String createPage() {
-        return "articles/new";
+        return "new";
     }
 
     @PostMapping("") // /articles
