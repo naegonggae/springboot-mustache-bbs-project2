@@ -6,9 +6,13 @@ import com.mustache.bbsproject2.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/articles")
@@ -23,6 +27,18 @@ public class ArticleController {
     @GetMapping("/new")
     public String createPage() {
         return "new";
+    }
+
+    @GetMapping("/{id}")
+    public String selectSingle(@PathVariable Long id, Model model) {
+        Optional<Article> optArticle = articleRepository.findById(id);
+        if (!optArticle.isEmpty()) {
+            // Optional.get() ---> Article
+            model.addAttribute("article", optArticle.get());
+            return "show";
+        } else {
+            return "error";
+        }
     }
 
     @PostMapping("") // /articles
